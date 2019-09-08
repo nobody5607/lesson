@@ -85,8 +85,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             $date = date('Y-m-d G:i:s', $model->created_at);
                             return appxq\sdii\utils\SDdate::mysql2phpDateTime($date);
                         }
-                    },
-                ],
+		  $date = date('Y-m-d H:i:s', $model->created_at);
+		  return appxq\sdii\utils\SDdate::mysql2phpDateTime($date);
+                  }
+		],
                 [
                     //'header' => 'Active',
                     'label'=>Yii::t('_user','Active'),
