@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?php else: ?>
 
-                    <?= $form->field($model, 'login',$fieldOptions1);?>
+                    <?= $form->field($model, 'login',$fieldOptions1)->label('รหัสผู้ใช้งาน');?>
 
                 <?php endif ?>
 
