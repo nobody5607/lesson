@@ -44,6 +44,9 @@ class Student extends StudentModel
         $query = StudentModel::find()->where('rstat not in(0,3)');
 
         $dataProvider = new ActiveDataProvider([
+	   'pagination' => [
+        	'pageSize' => 150,
+    	],
             'query' => $query,
         ]);
 

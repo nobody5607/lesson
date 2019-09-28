@@ -43,7 +43,8 @@ class Student extends \yii\db\ActiveRecord
             [['name'], 'string', 'max' => 200],
             [['room'], 'string', 'max' => 10],
             [['id'], 'string', 'max' => 20],
-            [['id','number'], 'unique'],
+            [['id'], 'unique'],
+//[['number'],'unique','message'=>'กรุณากรอกเลขที่นักเรียนใหม่ เพราะเลขที่นี้ได้ถูกใช้เเล้ว'],
             ['tel', 'string', 'min' => 10, 'max' => 10,'message'=>'เบอร์โทรศัพทต้องมี 10 ตัว']
         ];
     }

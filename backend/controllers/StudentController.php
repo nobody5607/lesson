@@ -87,8 +87,13 @@ class StudentController extends Controller
             $model->token = \Yii::$app->security->generateRandomString(20);
             $model->rstat = 1;
 	    if ($model->load(Yii::$app->request->post())) {
+
+		$cs = Student::find()->where(['room'=>$model->room, 'number'=>$model->number])->one();
+	       if($cs){
+		return \cpn\chanpan\classes\CNMessage::getError('กรุณากรอกเลขที่นักเรียนใหม่ เพราะเลขที่นี้ได้ถูกใช้เเล้ว');
+               }	
                 $post = \Yii::$app->request->post('Student');
-                if($post['image'] != ''){
+                 if($post['image'] != ''){
                     $model->image = \appxq\sdii\utils\SDUtility::array2String($post['image']);
                  }
 		if ($model->save()) {
@@ -129,6 +134,16 @@ class StudentController extends Controller
             $model->update_by = \common\modules\user\classes\CNUserFunc::getUserId();
             $model->update_date = date('Y-m-d H:i:s');
             $model->rstat = 1;
+ 	       $cs = Student::find()->where('room=:room AND number=:number AND id <> :id',[
+		  ':room'=>$model->room,
+		 ':number'=>$model->number,
+		 ':id'=>$model->id
+ 		])->one();
+	      if($cs){
+                return \cpn\chanpan\classes\CNMessage::getError('กรุณากรอกเลขที่นักเรียนใหม่ เพราะเลขที่นี้ได้ถูกใช้เเล้ว');
+               }
+
+
             if($post['image'] != ''){
                $model->image = \appxq\sdii\utils\SDUtility::array2String($post['image']);
             }
