@@ -38,8 +38,18 @@ $this->params['breadcrumbs'][] = $this->title;
 				return "{$fname} {$lname}";
 			}
 		],
+[
+                  'attribute'=>'create_date',
+                  'value'=>function($model){
+                        if($model->create_date){
+                          $date = \appxq\sdii\utils\SDdate::mysql2phpDateTime($model->create_date);
+                         return $date;
+                        }
+                  }
+                ],
+
 		//'update_by',
-		'update_date',  
+		//'update_date',  
 		
 	    ],
 	]) ?>

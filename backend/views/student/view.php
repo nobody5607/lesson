@@ -47,7 +47,15 @@ $this->params['breadcrumbs'][] = $this->title;
 				return "{$fname} {$lname}";
 			}
 		],
-		'create_date',
+		[
+		  'attribute'=>'create_date',
+		  'value'=>function($model){
+			if($model->create_date){
+			  $date = \appxq\sdii\utils\SDdate::mysql2phpDateTime($model->create_date);
+			 return $date;
+			}
+		  }
+		],
 		[
 			'attribute'=>'update_by',
 			'value'=>function($model){
@@ -57,7 +65,17 @@ $this->params['breadcrumbs'][] = $this->title;
 				return "{$fname} {$lname}";
 			}
 		],
-		'update_date',
+		[
+                  'attribute'=>'update_date',
+                  'value'=>function($model){
+                        if($model->update_date){
+                          $date = \appxq\sdii\utils\SDdate::mysql2phpDateTime($model->update_date);
+                         return $date;
+                        }
+                  }
+                ],
+
+		//'update_date',
 	    ],
 	]) ?>
     </div>
