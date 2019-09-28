@@ -36,14 +36,14 @@ class Student extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id','password','name','sex','tel'], 'required'],
+            [['id','password','name','sex','tel','number'], 'required'],
             [['number', 'sex', 'create_by', 'update_by', 'rstat'], 'integer'],
             [['address'], 'string'],
             [['create_date', 'update_date','token','start_score','end_score','image','address'], 'safe'],
             [['name'], 'string', 'max' => 200],
             [['room'], 'string', 'max' => 10],
             [['id'], 'string', 'max' => 20],
-            [['id'], 'unique'],
+            [['id','number'], 'unique'],
             ['tel', 'string', 'min' => 10, 'max' => 10,'message'=>'เบอร์โทรศัพทต้องมี 10 ตัว']
         ];
     }
@@ -66,8 +66,8 @@ class Student extends \yii\db\ActiveRecord
             'update_by' => Yii::t('app', 'แก้ไขโดย'),
             'update_date' => Yii::t('app', 'แก้ไขเมื่อ'),
             'rstat' => Yii::t('app', 'สถานะ'),
-            'start_score'=>'คะแนนสอบก่อนเรียน',
-            'end_score'=>'คะแนนสอบหลังเรียน',
+            'start_score'=>'คะแนนแบบทดสอบก่อนเรียน',
+            'end_score'=>'คแนนแบบทดสอบหลังเรียน',
             
         ];
     }

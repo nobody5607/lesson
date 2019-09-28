@@ -139,7 +139,7 @@ class StudentController extends Controller
                     return \cpn\chanpan\classes\CNMessage::getSuccess('Update successfully');
                 }
             } else {
-                return \cpn\chanpan\classes\CNMessage::getError('Can not update the data.');
+                return \cpn\chanpan\classes\CNMessage::getError('Can not update the data.'.\appxq\sdii\utils\SDUtility::array2String($model->errors));
             }
         } 
             if($model->image != ''){
