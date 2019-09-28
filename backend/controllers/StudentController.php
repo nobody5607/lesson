@@ -94,7 +94,7 @@ class StudentController extends Controller
 		if ($model->save()) {
 		    return \cpn\chanpan\classes\CNMessage::getSuccess('Create successfully');
 		} else {
-		    return \cpn\chanpan\classes\CNMessage::getError('Can not create the data.'.\yii\helpers\JSON::encode($model->errors), $model->errors);
+		    return \cpn\chanpan\classes\CNMessage::getError('Can not create the data.'.\appxq\sdii\utils\SDUtility::array2String($model->errors), $model->errors);
 		}
 	    } else {
 		return $this->renderAjax('create', [
